@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base{
+  :root{
+    --background: 220 20% 7%;
+    --foreground: 210 20% 92%;
+
+    --card: 220 18% 10%;
+    --card-foreground: 210 20% 92%;
+    
+    --popover: 220 18% 10%;
+    --popover-foreground: 210 20% 92%;
+
+    --primary: 175 80% 50%;
+    --primary-foreground: 220 20% 7%;
+
+    --secondary: 220 16% 14%;
+    --secondary-foreground: 210 20% 85%;
+
+    --muted: 220 14% 16%;
+    --muted-foreground: 210 20% 92%;
+
+    --accent: 175 60% 40%;
+    --accent-foreground: 210 20% 92%;
+    
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 14% 18%;
+    --input: 220 14% 18%;
+    --ring: 175 80% 50%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 220 18% 10%;
+    --sidebar-foreground: 210 20% 85%;
+    --sidebar-primary: 175 80% 50%;
+    --sidebar-primary-foreground: 220 20% 7%;
+    --sidebar-accent: 220 14% 16%;
+    --sidebar-accent-foreground: 210 20% 85%;
+    --sidebar-border: 220 14% 18%;
+    --sidebar-ring: 175 80% 50%;
+
+    /*Custom tokens*/
+    --gradient-primary: linear-gradient(135deg, hsl(175, 80%, 50%), hsl(200, 80%, 55%));
+    --gradient-hero: linear-gradient(180deg, hsl(220, 20%, 7%), hsl(220, 25%, 10%)100%);
+    --shadow-glow: 0 0 30px hsl(175 80% 50% / 0.15);
+    --shadow-card: 0 8px 32px hsla(193, 47%, 44%, 0.3);
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+}
+
+@layer base{
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-display);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+  }
+
+  code, pre {
+    font-family: var(--font-mono);
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .glow-border {
+    border: 1px solid hsl(175 80% 50% / 0.2);
+    box-shadow: var(--shadow-glow);
+  }
+
+  .card-elevated {
+    background: hsl(var(--card));
+    box-shadow: var(--shadow-card);
+    border: 1px solid hsl(var(--border));
+  }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted));
+  border-radius: 3px;
+}
+
+/* Selection */
+::selection {
+  background: hsl(175 80% 50% / 0.3);
+  color: hsl(var(--foreground));
+}
