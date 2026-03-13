@@ -9,8 +9,8 @@ const Footer = () => {
         </p>
         <div className="flex items-center gap-4">
           {[
-            { icon: Github, href: "#", label: "GitHub" },
-            { icon: Linkedin, href: "#", label: "LinkedIn" },
+            { icon: Github, href: "https://github.com/EstebanOyarzunRomano", label: "GitHub" },
+            { icon: Linkedin, href: "https://www.linkedin.com/in/esteban-damian-oyarzun-romano-06638627a?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B8KEikgpiSvmzkEZVyyBndw%3D%3D", label: "LinkedIn" },
             { icon: Mail, href: "#contacto", label: "Email" },
           ].map(({ icon: Icon, href, label }) => (
             <a

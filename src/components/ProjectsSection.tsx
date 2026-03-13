@@ -3,14 +3,6 @@ import { Globe, Github } from "lucide-react";
 
 const projects = [
   {
-    title: "Sitio Web de Música Rap",
-    description:
-      "Sitio web dedicado a la música rap desarrollado como proyecto inicial de mi formación en Desarrollo Web Full Stack. Construido con HTML, CSS, Sass y Bootstrap, aplicando conceptos de maquetación, diseño responsive y organización de estilos.",
-    tags: ["HTML", "CSS", "Sass", "Bootstrap"],
-    liveUrl: "https://estebanoyarzunromano.github.io/proyecto-pagina-musica/",
-    githubUrl: "https://github.com/EstebanOyarzunRomano/proyecto-pagina-musica",
-  },
-  {
     title: "Sitio Web Profesional para Abogada",
     description:
       "Página web profesional desarrollada para un estudio jurídico, con diseño elegante, sección de especialidades, equipo profesional y formulario de contacto. Optimizada para una navegación clara y responsive en todos los dispositivos.",
@@ -18,14 +10,33 @@ const projects = [
     liveUrl: "https://abogadadiazecenarro.com.ar/",
     githubUrl: "https://github.com/EstebanOyarzunRomano/estudio-juridico",
   },
+  
+  {
+    title: "Sitio Web de Música Rap",
+    description:
+      "Sitio web dedicado a la música rap desarrollado como proyecto inicial de mi formación en Desarrollo Web Full Stack. Construido con HTML, CSS, Sass y Bootstrap, aplicando conceptos de maquetación, diseño responsive y organización de estilos.",
+    tags: ["HTML", "CSS", "Sass", "Bootstrap"],
+    liveUrl: "https://estebanoyarzunromano.github.io/proyecto-pagina-musica/",
+    githubUrl: "https://github.com/EstebanOyarzunRomano/proyecto-pagina-musica",
+  },
+  
   {
     title: "Portfolio Personal de Desarrollo Web",
     description:
       "Portfolio personal desarrollado con React para presentar mis proyectos, habilidades y experiencia como desarrollador web. Incluye animaciones, diseño moderno en modo oscuro y una interfaz responsive optimizada para diferentes dispositivos.",
     tags: ["HTML", "React", "JavaScript"],
-    liveUrl: "#",
-    githubUrl: "#",
+    liveUrl: "https://portfolio-red-one-68.vercel.app/",
+    githubUrl: "https://github.com/EstebanOyarzunRomano/portfolio",
   },
+
+  {
+    title: "Sistema de turnos",
+    description: "Sistema web de gestión de turnos que permite a los usuarios reservar citas de manera simple y rápida. Incluye visualización de disponibilidad, registro de turnos y administración básica desde el panel del sistema. Desarrollado con React y tecnologías modernas de desarrollo web para ofrecer una experiencia ágil.", 
+    tags: ["HTML", "JavaScript", "React"],
+    liveUrl: "https://sistema-de-turnos-dun.vercel.app/",
+    githubUrl: "https://github.com/EstebanOyarzunRomano/sistema-de-turnos",
+  },
+
 ];
 
 const ProjectsSection = () => {

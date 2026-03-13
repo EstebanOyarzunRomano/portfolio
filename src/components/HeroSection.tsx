@@ -65,8 +65,8 @@ const HeroSection = () => {
           className="flex items-center justify-center gap-4 mb-16"
         >
           {[
-            { icon: Github, href: "#", label: "GitHub" },
-            { icon: Linkedin, href: "#", label: "LinkedIn" },
+            { icon: Github, href: "https://github.com/EstebanOyarzunRomano?tab=repositories", label: "GitHub" },
+            { icon: Linkedin, href: "https://www.linkedin.com/in/esteban-damian-oyarzun-romano-06638627a?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BkPJPb5gwRea83L99lQyIbQ%3D%3D", label: "LinkedIn" },
             { icon: Mail, href: "#contacto", label: "Email" },
           ].map(({ icon: Icon, href, label }) => (
             <a
