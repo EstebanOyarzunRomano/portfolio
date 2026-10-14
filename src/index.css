@@ -4,14 +4,18 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base{
-  :root{
+/* ========================================
+   VARIABLES GLOBALES - SEVEN WEB
+======================================== */
+
+@layer base {
+  :root {
     --background: 220 20% 7%;
     --foreground: 210 20% 92%;
 
     --card: 220 18% 10%;
     --card-foreground: 210 20% 92%;
-    
+
     --popover: 220 18% 10%;
     --popover-foreground: 210 20% 92%;
 
@@ -26,7 +30,7 @@
 
     --accent: 175 60% 40%;
     --accent-foreground: 210 20% 92%;
-    
+
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
@@ -36,6 +40,7 @@
 
     --radius: 0.75rem;
 
+    /* Sidebar */
     --sidebar-background: 220 18% 10%;
     --sidebar-foreground: 210 20% 85%;
     --sidebar-primary: 175 80% 50%;
@@ -45,17 +50,40 @@
     --sidebar-border: 220 14% 18%;
     --sidebar-ring: 175 80% 50%;
 
-    /*Custom tokens*/
-    --gradient-primary: linear-gradient(135deg, hsl(175, 80%, 50%), hsl(200, 80%, 55%));
-    --gradient-hero: linear-gradient(180deg, hsl(220, 20%, 7%), hsl(220, 25%, 10%)100%);
+    /* Gradientes */
+    --gradient-primary: linear-gradient(
+      135deg,
+      hsl(175, 80%, 50%),
+      hsl(200, 80%, 55%)
+    );
+
+    --gradient-hero: linear-gradient(
+      180deg,
+      hsl(220, 20%, 7%),
+      hsl(220, 25%, 10%) 100%
+    );
+
+    /* Sombras */
     --shadow-glow: 0 0 30px hsl(175 80% 50% / 0.15);
-    --shadow-card: 0 8px 32px hsla(193, 47%, 44%, 0.3);
+
+    --shadow-card: 0 8px 32px hsla(
+      193,
+      47%,
+      44%,
+      0.3
+    );
+
+    /* Tipografías */
     --font-display: 'Space Grotesk', sans-serif;
     --font-mono: 'JetBrains Mono', monospace;
   }
 }
 
-@layer base{
+/* ========================================
+   ESTILOS BASE
+======================================== */
+
+@layer base {
   * {
     @apply border-border;
   }
@@ -63,16 +91,28 @@
   body {
     @apply bg-background text-foreground;
     font-family: var(--font-display);
+    margin: 0;
+    min-width: 320px;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: var(--font-display);
   }
 
-  code, pre {
+  code,
+  pre {
     font-family: var(--font-mono);
   }
 }
+
+/* ========================================
+   UTILIDADES VISUALES
+======================================== */
 
 @layer utilities {
   .text-gradient {
@@ -94,19 +134,68 @@
   }
 }
 
-/* Scrollbar */
+/* ========================================
+   NAVEGACIÓN Y DESPLAZAMIENTO
+======================================== */
+
+/*
+  El Navbar controla el desplazamiento mediante
+  JavaScript y calcula su altura automáticamente.
+
+  No agregamos scroll-padding-top ni
+  scroll-margin-top globales para evitar
+  compensaciones duplicadas.
+*/
+
+html {
+  scroll-behavior: smooth;
+}
+
+section[id] {
+  scroll-margin-top: 0;
+}
+
+/* Accesibilidad: movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ========================================
+   SCROLLBAR PERSONALIZADA
+======================================== */
+
 ::-webkit-scrollbar {
   width: 6px;
 }
+
 ::-webkit-scrollbar-track {
   background: hsl(var(--background));
 }
+
 ::-webkit-scrollbar-thumb {
   background: hsl(var(--muted));
   border-radius: 3px;
 }
 
-/* Selection */
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary) / 0.5);
+}
+
+/* ========================================
+   SELECCIÓN DE TEXTO
+======================================== */
+
 ::selection {
   background: hsl(175 80% 50% / 0.3);
   color: hsl(var(--foreground));

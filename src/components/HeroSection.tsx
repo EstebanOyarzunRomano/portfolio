@@ -1,78 +1,182 @@
-import { motion } from "framer-motion";
-import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
+import { motion, useReducedMotion } from "framer-motion";
+import {
+  ArrowDown,
+  ArrowRight,
+  ArrowUpRight,
+  Github,
+  Linkedin,
+  Mail,
+  Code2,
+  Database,
+  ShoppingCart,
+  Layout,
+  Server,
+} from "lucide-react";
 import heroBg from "../assets/descarga.jpg";
 
+const services = [
+  { icon: Layout, name: "Páginas web" },
+  { icon: ShoppingCart, name: "Tiendas online" },
+  { icon: Code2, name: "Aplicaciones web" },
+  { icon: Server, name: "APIs y Backend" },
+  { icon: Database, name: "Bases de datos" },
+];
+
+const socialLinks = [
+  {
+    icon: Github,
+    href: "https://github.com/EstebanOyarzunRomano",
+    label: "GitHub",
+  },
+  {
+    icon: Linkedin,
+    href: "https://www.linkedin.com/in/esteban-damian-oyarzun-romano-06638627a",
+    label: "LinkedIn",
+  },
+  {
+    icon: Mail,
+    href: "mailto:esteban.oyarzun2014@gmail.com",
+    label: "Enviar Correo Electronico",
+  },
+];
+
 const HeroSection = () => {
+  const reduceMotion = useReducedMotion();
+
+  const reveal = (delay: number) => ({
+    initial: reduceMotion ? false : { opacity: 0, y: 25 },
+    animate: { opacity: 1, y: 0 },
+    transition: {
+      duration: reduceMotion ? 0 : 0.6,
+      delay: reduceMotion ? 0 : delay,
+      ease: "easeOut" as const,
+    },
+  });
+
   return (
     <section
       id="inicio"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden py-28 md:py-32"
     >
-      {/* Background image */}
+      {/* Fondo original */}
       <div className="absolute inset-0 z-0">
         <img
           src={heroBg}
           alt=""
+          aria-hidden="true"
           className="w-full h-full object-cover opacity-30"
         />
+
         <div className="absolute inset-0 bg-gradient-to-b from-background/50 via-background/80 to-background" />
       </div>
 
-      <div className="container relative z-10 mx-auto px-6 text-center">
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-          className="font-mono text-sm text-gray-300 bg-cyan-500/10 px-3 py-1 rounded-md mb-4 inline-block"
-        >
-          ¡Hola! 👋 Mi nombre es
-        </motion.p>
+      {/* Iluminación decorativa */}
+      <div
+        aria-hidden="true"
+        className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[650px] h-[450px] max-w-full bg-cyan-500/10 blur-[120px] rounded-full pointer-events-none"
+      />
 
+      <div className="container relative z-10 mx-auto px-6 text-center">
+
+        {/* Etiqueta superior */}
+        <motion.div {...reveal(0.2)}>
+          <span className="inline-flex items-center gap-2 font-mono text-xs md:text-sm text-cyan-300 bg-cyan-500/10 border border-cyan-500/20 px-4 py-2 rounded-full mb-7">
+            DESARROLLO WEB · SOLUCIONES DIGITALES
+          </span>
+        </motion.div>
+
+        {/* Nombre */}
         <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4, duration: 0.6 }}
-          className="text-5xl md:text-7xl lg:text-8xl font-bold mb-4 font-display"
+          {...reveal(0.4)}
+          className="text-5xl md:text-7xl lg:text-8xl font-bold mb-5 font-display tracking-tight"
         >
-          <span className="text-foreground">Esteban </span>
-          <span className="text-gradient">Oyarzun Romano</span>
+          <span className="text-foreground">Esteban Damian </span>
+          <span className="text-gradient">
+          Oyarzun Romano
+          </span>
         </motion.h1>
 
+        {/* Profesión */}
         <motion.h2
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6, duration: 0.6 }}
-          className="text-xl md:text-2xl text-muted-foreground mb-8 font-display"
+          {...reveal(0.6)}
+          className="text-xl md:text-2xl lg:text-3xl text-gray-200 mb-7 font-display"
         >
-          Desarrollador Web Full Stack
+          Desarrollador Full Stack
         </motion.h2>
 
+        {/* Descripción */}
         <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.8 }}
-          className="max-w-xl mx-auto text-muted-foreground mb-10 leading-relaxed"
+          {...reveal(0.8)}
+          className="max-w-3xl mx-auto text-muted-foreground text-base md:text-lg mb-9 leading-relaxed"
         >
-          Creo experiencias web modernas y funcionales.
-          Especializado en HTML, CSS, JavaScript y React.
+          Transformo ideas en soluciones digitales.
+          Desarrollo páginas web, tiendas online,
+          aplicaciones personalizadas, sistemas de
+          gestión, APIs y bases de datos, combinando
+          diseño moderno, rendimiento y funcionalidad.
         </motion.p>
 
-        {/* Social links */}
+        {/* Botones principales */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1 }}
-          className="flex items-center justify-center gap-4 mb-16"
+          {...reveal(1)}
+          className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10"
         >
-          {[
-            { icon: Github, href: "https://github.com/EstebanOyarzunRomano?tab=repositories", label: "GitHub" },
-            { icon: Linkedin, href: "https://www.linkedin.com/in/esteban-damian-oyarzun-romano-06638627a?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BkPJPb5gwRea83L99lQyIbQ%3D%3D", label: "LinkedIn" },
-            { icon: Mail, href: "#contacto", label: "Email" },
-          ].map(({ icon: Icon, href, label }) => (
+          <a
+            href="#contacto"
+            className="group inline-flex items-center justify-center gap-2 w-full sm:w-auto px-7 py-3.5 rounded-lg bg-cyan-500 text-slate-950 font-semibold hover:bg-cyan-400 hover:-translate-y-1 transition-all duration-300 shadow-lg shadow-cyan-500/20"
+          >
+            Solicitar presupuesto
+            <ArrowUpRight
+              size={19}
+              className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
+            />
+          </a>
+
+          <a
+            href="#proyectos"
+            className="group inline-flex items-center justify-center gap-2 w-full sm:w-auto px-7 py-3.5 rounded-lg border border-cyan-500/30 bg-white/5 text-cyan-200 hover:border-cyan-400 hover:bg-cyan-500/10 transition-all duration-300"
+          >
+            Ver mis proyectos
+            <ArrowRight
+              size={19}
+              className="group-hover:translate-x-1 transition-transform"
+            />
+          </a>
+        </motion.div>
+
+        {/* Servicios destacados */}
+        <motion.div
+          {...reveal(1.1)}
+          className="flex flex-wrap items-center justify-center gap-3 max-w-4xl mx-auto mb-10"
+        >
+          {services.map(({ icon: Icon, name }) => (
+            <motion.div
+              key={name}
+              whileHover={
+                reduceMotion ? undefined : { y: -4, scale: 1.03 }
+              }
+              className="flex items-center gap-2 px-4 py-2.5 rounded-lg border border-cyan-500/20 bg-white/5 backdrop-blur-sm text-gray-300 hover:text-cyan-300 hover:border-cyan-400/40 transition-colors"
+            >
+              <Icon size={16} className="text-cyan-400" />
+              <span className="text-xs md:text-sm font-medium">
+                {name}
+              </span>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        {/* Redes sociales */}
+        <motion.div
+          {...reveal(1.2)}
+          className="flex items-center justify-center gap-4 mb-10"
+        >
+          {socialLinks.map(({ icon: Icon, href, label }) => (
             <a
               key={label}
               href={href}
               aria-label={label}
+              target={href.startsWith("http") ? "_blank" : undefined}
+              rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
               className="p-3 rounded-lg border border-cyan-500/20 bg-white/5 text-cyan-300 hover:text-white hover:border-cyan-400 hover:bg-cyan-500/10 transition-all duration-300"
             >
               <Icon size={20} />
@@ -80,13 +184,29 @@ const HeroSection = () => {
           ))}
         </motion.div>
 
-        {/* Scroll indicator */}
+        {/* Indicador de scroll */}
         <motion.a
           href="#sobre-mi"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1, y: [0, 8, 0] }}
-          transition={{ delay: 1.2, y: { repeat: Infinity, duration: 2 } }}
-          className="inline-block text-cyan-300 hover:text-white transition-colors"
+          aria-label="Desplazarse a la sección Sobre mí"
+          initial={reduceMotion ? false : { opacity: 0 }}
+          animate={
+            reduceMotion
+              ? { opacity: 1 }
+              : { opacity: 1, y: [0, 8, 0] }
+          }
+          transition={
+            reduceMotion
+              ? { duration: 0 }
+              : {
+                  opacity: { delay: 1.4 },
+                  y: {
+                    repeat: Infinity,
+                    duration: 2,
+                    ease: "easeInOut",
+                  },
+                }
+          }
+          className="inline-flex text-cyan-300 hover:text-white transition-colors"
         >
           <ArrowDown size={24} />
         </motion.a>
