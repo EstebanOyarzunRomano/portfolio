@@ -39,10 +39,10 @@ const featuredProjects: FeaturedProject[] = [
     liveUrl: "https://abogadadiazecenarro.com.ar/",
     githubUrl:
       "https://github.com/EstebanOyarzunRomano/estudio-juridico",
-    image: "./public/estudio_juridico.png"
+    image: "/estudio_juridico.png"
   },
   {
-    title: "Agustina Andrade – Abogada",
+    title: "Agustina Andrade - Abogada",
     category: "Sitio web profesional",
     description:
       "Sitio web para una profesional del derecho, desarrollado con una interfaz moderna, secciones informativas, formulario de contacto y diseño adaptable a distintos dispositivos.",
@@ -50,7 +50,7 @@ const featuredProjects: FeaturedProject[] = [
     liveUrl: "https://draandrade.com.ar/",
     githubUrl:
       "https://github.com/EstebanOyarzunRomano/agustina-estudio-juridico",
-    image: "./public/dra_andrade.png"
+    image: "/dra_andrade.png"
   },
   {
     title: "Sistema de turnos",
@@ -61,7 +61,7 @@ const featuredProjects: FeaturedProject[] = [
     liveUrl: "https://sistema-de-turnos-dun.vercel.app/",
     githubUrl:
       "https://github.com/EstebanOyarzunRomano/sistema-de-turnos",
-    image: "./public/sistema_de_turnos.png"
+    image: "/sistema_de_turnos.png"
   },
 ];
 
