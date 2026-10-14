@@ -135,42 +135,52 @@ const Navbar = () => {
     event: React.MouseEvent<HTMLAnchorElement>,
     href: string
   ) => {
+    event.preventDefault();
+
     const sectionId = href.substring(1);
     const target = document.getElementById(sectionId);
 
-    if (!target) return;
+    if (!target) {
+      console.warn(`No se encontró la sección: ${sectionId}`);
+      return;
+    }
 
-    event.preventDefault();
-
+    // Cerrar el menú móvil
     setIsOpen(false);
     setActiveSection(sectionId);
 
+    // Cancelar cualquier temporizador anterior
     if (unlockTimerRef.current !== null) {
       clearTimeout(unlockTimerRef.current);
     }
 
     scrollLockRef.current = true;
 
-    const navHeight =
-      navRef.current?.getBoundingClientRect().height ?? 72;
+    // Esperar a que termine la animación del menú
+    const delay = window.innerWidth < 1024 ? 300 : 0;
 
-    const targetPosition =
-      target.getBoundingClientRect().top +
-      window.scrollY -
-      navHeight -
-      12;
+    window.setTimeout(() => {
+      const navHeight =
+        navRef.current?.getBoundingClientRect().height ?? 72;
 
-    window.scrollTo({
-      top: Math.max(0, targetPosition),
-      behavior: reduceMotion ? "instant" : "smooth",
-    });
+      const targetPosition =
+        target.getBoundingClientRect().top +
+        window.scrollY -
+        navHeight -
+        12;
 
-    window.history.replaceState(null, "", href);
+      window.scrollTo({
+        top: Math.max(0, targetPosition),
+        behavior: reduceMotion ? "auto" : "smooth",
+      });
 
-    unlockTimerRef.current = setTimeout(() => {
-      scrollLockRef.current = false;
-      unlockTimerRef.current = null;
-    }, reduceMotion ? 0 : 900);
+      window.history.replaceState(null, "", href);
+
+      unlockTimerRef.current = setTimeout(() => {
+        scrollLockRef.current = false;
+        unlockTimerRef.current = null;
+      }, reduceMotion ? 0 : 900);
+    }, delay);
   };
 
   return (
@@ -210,9 +220,11 @@ const Navbar = () => {
               <li key={item.href}>
                 <a
                   href={item.href}
-                  onClick={(event) =>
-                    navigateTo(event, item.href)
-                  }
+                  onClick={(event) => {
+                    console.log("Click en:", item.label);
+                    setIsOpen(false);
+                    navigateTo(event, item.href);
+                  }}
                   aria-current={
                     isActive ? "location" : undefined
                   }
