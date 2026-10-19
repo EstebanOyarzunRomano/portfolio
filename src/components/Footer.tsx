@@ -67,7 +67,7 @@ const Footer = () => {
               <span className="font-display text-xl font-bold tracking-tight">
                 Seven
                 <span className="text-cyan-400">
-                  Web
+                  Web Estudio
                 </span>
               </span>
             </a>

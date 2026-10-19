@@ -88,11 +88,14 @@ const HeroSection = () => {
         {/* Nombre */}
         <motion.h1
           {...reveal(0.4)}
-          className="text-5xl md:text-7xl lg:text-8xl font-bold mb-5 font-display tracking-tight"
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-5 font-display tracking-tight leading-tight"
         >
-          <span className="text-foreground">Esteban Damian </span>
-          <span className="text-gradient">
-          Oyarzun Romano
+          <span className="block text-foreground">
+            Esteban Damián
+          </span>
+
+          <span className="block text-gradient">
+            Oyarzun Romano
           </span>
         </motion.h1>
 

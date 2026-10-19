@@ -5,6 +5,7 @@ import {
   useReducedMotion,
 } from "framer-motion";
 import { Menu, X, ArrowUpRight } from "lucide-react";
+import sevenWebLogo from "../assets/logo_corregido.png";
 
 const navItems = [
   { label: "Inicio", href: "#inicio" },
@@ -201,13 +202,16 @@ const Navbar = () => {
         <a
           href="#inicio"
           onClick={(event) => navigateTo(event, "#inicio")}
-          className="flex items-center gap-1 font-mono font-bold text-xl tracking-tight shrink-0"
+          className="flex shrink-0 items-center"
           aria-label="Seven Web - Ir al inicio"
         >
-          <span className="text-cyan-400">{"<"}</span>
-          <span className="text-foreground">Seven</span>
-          <span className="text-gradient">Web</span>
-          <span className="text-cyan-400">{"/>"}</span>
+          <img 
+          src={sevenWebLogo} 
+          alt="Seven Web Logo" 
+          className="h-auto w-[140px] sm:w-[220px] object-contain" 
+          loading="lazy"
+          decoding="async"
+          />
         </a>
 
         {/* Menú escritorio */}

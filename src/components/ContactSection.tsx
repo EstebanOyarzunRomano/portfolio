@@ -8,6 +8,7 @@ import {
   MapPin,
   Send,
   ArrowUpRight,
+  MessageCircle,
 } from "lucide-react";
 
 type FormStatus =
@@ -17,6 +18,11 @@ type FormStatus =
   | "error";
 
 const CONTACT_EMAIL = "esteban.oyarzun2014@gmail.com";
+const WHATSAPP_URL =
+  "https://wa.me/5492964557176?text=" +
+  encodeURIComponent(
+    "Hola Esteban, vi tu portfolio de Seven Web Estudio y me gustaría consultar por un proyecto web."
+  );
 
 // Reemplazar con el endpoint real de Formspree.
 // Mientras esté vacío, se utilizará el correo electrónico.
@@ -390,10 +396,13 @@ const ContactSection = () => {
             </p>
 
             <a
-              href={`mailto:${CONTACT_EMAIL}`}
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-sm font-medium text-cyan-300 hover:text-cyan-200 transition-colors"
             >
-              Enviarme un correo
+              <MessageCircle size={19} aria-hidden="true" />
+              Escribime por WhatsApp
               <ArrowUpRight size={17} />
             </a>
           </div>
